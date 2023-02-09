@@ -1,16 +1,31 @@
 package com.example.football.Statistics;
 
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+@Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class Pace {
 
+    @Id
+    @GeneratedValue
+    @NotNull
+    @Column(unique = true)
+    private int id;
+    @NotNull
     int acceleration;
+    @NotNull
     int sprintSpeed;
+
+    public Pace(int acceleration, int sprintSpeed) {
+        this.acceleration = acceleration;
+        this.sprintSpeed = sprintSpeed;
+    }
 
     private int calculatePace() {
         double result = acceleration * 0.45 + sprintSpeed * 0.55;

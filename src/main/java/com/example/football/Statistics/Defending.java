@@ -1,19 +1,40 @@
 package com.example.football.Statistics;
 
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+@Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class Defending {
 
+    @Id
+    @GeneratedValue
+    @NotNull
+    @Column(unique = true)
+    private int id;
+    @NotNull
     int interceptions;
+    @NotNull
     int headingAccuracy;
+    @NotNull
     int marking;
+    @NotNull
     int standingTackle;
+    @NotNull
     int slidingTackle;
+
+    public Defending(int interceptions, int headingAccuracy, int marking, int standingTackle, int slidingTackle) {
+        this.interceptions = interceptions;
+        this.headingAccuracy = headingAccuracy;
+        this.marking = marking;
+        this.standingTackle = standingTackle;
+        this.slidingTackle = slidingTackle;
+    }
 
     private int calculateDefending() {
         double result = interceptions * 0.2 + headingAccuracy * 0.1 +

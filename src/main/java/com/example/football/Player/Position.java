@@ -23,7 +23,7 @@ public enum Position {
     private final String displayName;
 
     Position(final String displayName) {
-        this.displayName=displayName;
+        this.displayName = displayName;
     }
 
     public String getDisplayName() {

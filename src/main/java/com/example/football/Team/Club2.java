@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Data
 @NoArgsConstructor
@@ -15,6 +14,14 @@ import java.util.Optional;
 public class Club2 {
 
     //CO DODAĆ:
+    //średnia wieku graczy wyjściowej 11, oraz całej drużyny
+
+    //budżet transferowy
+    //wartość: 1. podstawowa 11, 2. ławka, 3. rezerwy
+    //średnia statystyk pierwszej jedenastki, ławki i rezerw
+
+    //lista graczy w drużynie
+    //listy graczy: 1. podstawowa 11, 2. ławce, 3. rezerwy
     //średnia wieku graczy wyjściowej 11, oraz całej drużyny
 
     //budżet transferowy
@@ -58,13 +65,10 @@ public class Club2 {
 
         //sprawdzanie, czy obaj piłkarze są w posiadają kluby
         if (players.contains(player1) && otherClub.players.contains(player2)) {
-            // usuwanie zawodników z klubów
             players.remove(player1);
             otherClub.players.remove(player2);
-            // dodawanie zawodników do klubów
             players.add(player2);
             otherClub.players.add(player1);
-            //sprawdzanie, czy zawodnicy znajdują się w jednej z trzech list
             if (startingLineup.contains(player1)) {
                 startingLineup.remove(player1);
                 startingLineup.add(player2);
@@ -85,10 +89,11 @@ public class Club2 {
                 otherClub.reserves.remove(player2);
                 otherClub.reserves.add(player1);
             } else {
-                System.out.println("nope");
+                System.out.println("transfer failed");
             }
         }
     }
+
 
     public void getClubWithRole(List<Club2> club) {
 
@@ -102,10 +107,12 @@ public class Club2 {
     }
 
     public void getSquad() {
-        System.out.println("\nClub - " + name +
-                "\nstartingLineup: " + startingLineup +
-                "\nbench: " + bench +
-                "\nreserves: " + reserves);
+        System.out.println(
+                "\nClub - " + name +
+                        "\nPlayers: " + players +
+                        "\nstartingLineup: " + startingLineup +
+                        "\nbench: " + bench +
+                        "\nreserves: " + reserves);
     }
 
     @Override

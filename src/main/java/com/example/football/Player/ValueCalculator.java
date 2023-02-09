@@ -10,11 +10,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class ValueCalculator {
 
-    Player player;
+    private Player player;
 
     public int calculateValue(Player player) {
 
-        switch (player.position) {
+        switch (player.getPosition()) {
             case GK:
                 return 1;
             case CB:
@@ -37,7 +37,7 @@ public class ValueCalculator {
     @Override
     public String toString() {
         return "ValueCalculator" +
-                "\nplayer: " + player.name + " " + player.lastName +
+                "\nplayer: " + player.getName() + " " + player.getLastName() +
                 "\nvalue: " + calculateValue(player);
     }
 }
