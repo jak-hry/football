@@ -27,7 +27,7 @@ public class Pace {
         this.sprintSpeed = sprintSpeed;
     }
 
-    private int calculatePace() {
+    public int calculatePace() {
         double result = acceleration * 0.45 + sprintSpeed * 0.55;
         return (result % 1 >= 0.5) ? (int) Math.ceil(result) :
                 (int) Math.floor(result);

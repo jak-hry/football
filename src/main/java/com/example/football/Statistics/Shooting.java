@@ -38,7 +38,7 @@ public class Shooting {
         this.penalties = penalties;
     }
 
-    private int calculateShooting() {
+    public int calculateShooting() {
         double result = positioning * 0.05 + finishing * 0.45 + shotPower * 0.2 +
                 longShots * 0.2 + volleys * 0.05 + penalties * 0.05;
         return (result % 1 >= 0.5) ? (int) Math.ceil(result) :

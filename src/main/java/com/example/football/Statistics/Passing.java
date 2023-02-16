@@ -39,7 +39,7 @@ public class Passing {
         this.curve = curve;
     }
 
-    private int calculatePassing() {
+    public int calculatePassing() {
         double result = vision * 0.2 + crossing * 0.2 + freeKickAccuracy * 0.05 +
                 shortPassing * 0.35 + longPassing * 0.15 + curve * 0.05;
         return (result % 1 >= 0.5) ? (int) Math.ceil(result) :

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2>Testy wyświetlania danych piłkarza</h2>
+<tr th:each="playerDetail: ${player}">
+    <td th:text="${player.getName()}"></td>
+    <p th:text="${player.getLastName()}"></p>
+    <p th:text="${player.getDate()}"></p>
+    <td th:text="${player.getPosition() }"></td>
+    <td>, ovr -</td>
+    <td th:text="${player.calculateOverall(player)}"></td>
+    <br>
+    <h2>Statistics: </h2>
+    <h3>Pace -
+        <td th:text="${player.getPlayerStatistics().getPace().calculatePace()}"></td>
+    </h3>
+    <p></p>
+    <td>acceleration:</td>
+    <td th:text="${player.getPlayerStatistics().getPace().getAcceleration()}"></td>
+    <p></p>
+    <td>sprint_speed:</td>
+    <td th:text="${player.getPlayerStatistics().getPace().getSprintSpeed()}"></td>
+    <p></p>
+    <br>
+    <h3>Shooting -
+        <td th:text="${player.getPlayerStatistics().getShooting().calculateShooting()}"></td>
+    </h3>
+    <p></p>
+    <td>positioning:</td>
+    <td th:text="${player.getPlayerStatistics().getShooting().getPositioning()}"></td>
+    <p></p>
+    <td>finishing:</td>
+    <td th:text="${player.getPlayerStatistics().getShooting().finishing}"></td>
+    <p></p>
+    <td>shot_power:</td>
+    <td th:text="${player.getPlayerStatistics().getShooting().getShotPower()}"></td>
+    <p></p>
+    <td>long_shots:</td>
+    <td th:text="${player.getPlayerStatistics().getShooting().getLongShots()}"></td>
+    <p></p>
+    <td>volleys:</td>
+    <td th:text="${player.getPlayerStatistics().getShooting().getVolleys()}"></td>
+    <p></p>
+    <td>penalties:</td>
+    <td th:text="${player.getPlayerStatistics().getShooting().getPenalties()}"></td>
+    <p></p>
+    <br>
+    <h3>Passing -
+        <td th:text="${player.getPlayerStatistics().getPassing().calculatePassing()}"></td>
+    </h3>
+    <p></p>
+    <td>vision:</td>
+    <td th:text="${player.getPlayerStatistics().getPassing().getVision()}"></td>
+    <p></p>
+    <td>crossing:</td>
+    <td th:text="${player.getPlayerStatistics().getPassing().getCrossing()}"></td>
+    <p></p>
+    <td>free_kick_accuracy:</td>
+    <td th:text="${player.getPlayerStatistics().getPassing().getFreeKickAccuracy()}"></td>
+    <p></p>
+    <td>short_passing:</td>
+    <td th:text="${player.getPlayerStatistics().getPassing().getShortPassing()}"></td>
+    <p></p>
+    <td>long_passing:</td>
+    <td th:text="${player.getPlayerStatistics().getPassing().getLongPassing()}"></td>
+    <p></p>
+    <td>curve:</td>
+    <td th:text="${player.getPlayerStatistics().getPassing().getCurve()}"></td>
+    <p></p>
+    <br>
+    <h3>Dribbling -
+        <td th:text="${player.getPlayerStatistics().getDribblings().calculateDribbling()}"></td>
+    </h3>
+    <p></p>
+    <td>agility:</td>
+    <td th:text="${player.getPlayerStatistics().getDribblings().getAgility()}"></td>
+    <p></p>
+    <td>balance:</td>
+    <td th:text="${player.getPlayerStatistics().getDribblings().getBalance()}"></td>
+    <p></p>
+    <td>reactions:</td>
+    <td th:text="${player.getPlayerStatistics().getDribblings().getReactions()}"></td>
+    <p></p>
+    <td>ball_control:</td>
+    <td th:text="${player.getPlayerStatistics().getDribblings().getBallControl()}"></td>
+    <p></p>
+    <td>dribbling:</td>
+    <td th:text="${player.getPlayerStatistics().getDribblings().dribblings}"></td>
+    <p></p>
+    <td>composure:</td>
+    <td th:text="${player.getPlayerStatistics().getDribblings().getComposure()}"></td>
+    <p></p>
+    <br>
+    <h3>Defending -
+        <td th:text="${player.getPlayerStatistics().getDefending().calculateDefending()}"></td>
+    </h3>
+    <p></p>
+    <td>interceptions:</td>
+    <td th:text="${player.getPlayerStatistics().getDefending().getInterceptions()}"></td>
+    <p></p>
+    <td>heading_accuracy:</td>
+    <td th:text="${player.getPlayerStatistics().getDefending().getHeadingAccuracy()}"></td>
+    <p></p>
+    <td>marking:</td>
+    <td th:text="${player.getPlayerStatistics().getDefending().getMarking()}"></td>
+    <p></p>
+    <td>standing_tackle:</td>
+    <td th:text="${player.getPlayerStatistics().getDefending().getStandingTackle()}"></td>
+    <p></p>
+    <td>sliding_tackle:</td>
+    <td th:text="${player.getPlayerStatistics().getDefending().getSlidingTackle()}"></td>
+    <p></p>
+    <br>
+    <h3>Physicality -
+        <td th:text="${player.getPlayerStatistics().getPhysicality().calculatePhysicality()}"></td>
+    </h3>
+    <p></p>
+    <td>jumping:</td>
+    <td th:text="${player.getPlayerStatistics().getPhysicality().getJumping()}"></td>
+    <p></p>
+    <td>stamina:</td>
+    <td th:text="${player.getPlayerStatistics().getPhysicality().getStamina()}"></td>
+    <p></p>
+    <td>strength:</td>
+    <td th:text="${player.getPlayerStatistics().getPhysicality().getStrength()}"></td>
+    <p></p>
+    <td>agression:</td>
+    <td th:text="${player.getPlayerStatistics().getPhysicality().getAggression()}"></td>
+    <p></p>
+    <p>-----------------------------------</p>
+    <br>
+</tr>
+</body>
+</html>

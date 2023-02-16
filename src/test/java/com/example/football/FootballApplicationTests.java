@@ -11,6 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.time.LocalDate;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 @SpringBootTest
@@ -41,50 +42,46 @@ class FootballApplicationTests {
     void testAddPlayer() {
 
         //Given
-        Pace pace = new Pace(80, 80);
-        Shooting shooting = new Shooting(81, 81, 81, 81, 81, 81);
-        Passing passing = new Passing(82, 82, 82, 82, 82, 82);
-        Dribbling dribbling = new Dribbling(83, 83, 83, 83, 83, 83);
-        Defending defending = new Defending(84, 84, 84, 84, 84, 84);
-        Physicality physicality = new Physicality(85, 85, 85, 85);
+        Pace pace = new Pace(76, 75);
+        Shooting shooting = new Shooting(94, 94, 91, 84, 89, 90);
+        Passing passing = new Passing(81, 71, 85, 84, 70, 79);
+        Dribbling dribbling = new Dribbling(77, 82, 93, 89, 85, 88);
+        Defending defending = new Defending(49, 91, 35, 42, 19);
+        Physicality physicality = new Physicality(85, 76, 87, 81);
 
         PlayerStatistic pS = new PlayerStatistic(pace, shooting, passing, dribbling, defending, physicality);
         LocalDate localDate = LocalDate.of(1988, 8, 21);
-        Player player = new Player("newName", "newLastName", localDate, Position.ST, pS);
+        Player player = new Player("Robert", "Lewandowski", localDate, Position.ST, pS);
 
         //When
         playerDao.save(player);
-//        paceDao.save(pace);
-//        shootingDao.save(shooting);
-//        passingDao.save(passing);
-//        dribblingDao.save(dribbling);
-//        defendingDao.save(defending);
-//        physicalityDao.save(physicality);
-//        playerStatisticsDao.save(pS);
-
         int playerId = player.getId();
-//        int pSId = pS.getId();
-//        int paceId = pace.getId();
-//        int shootingId = shooting.getId();
-//        int passingId = passing.getId();
-//        int dribblingId = dribbling.getId();
-//        int defendingId = defending.getId();
-//        int physicalityId = physicality.getId();
 
         //Then
         try {
             assertNotEquals(0, playerId);
         } finally {
-//            paceDao.deleteById(paceId);
-//            shootingDao.deleteById(shootingId);
-//            passingDao.deleteById(passingId);
-//            dribblingDao.deleteById(dribblingId);
-//            defendingDao.deleteById(defendingId);
-//            physicalityDao.deleteById(physicalityId);
 //            playerDao.deleteById(playerId);
-//            playerStatisticsDao.deleteById(pSId);
         }
 
+    }
+
+    @Test
+    void testGetList() {
+
+        //Given
+        Iterable<Player> playerList = playerDao.findAll();
+
+        //When
+        int counter = 0;
+        for (Player list : playerList) {
+            System.out.println(list);
+            counter++;
+        }
+        int size = counter;
+
+        //Then
+        assertEquals(1, size);
     }
 
     @Test
@@ -96,8 +93,8 @@ class FootballApplicationTests {
         GoalKeeper goalKeeper = new GoalKeeper("name", "lastName", localDate, Position.GK, gKS);
 
         //When
-//        gkStatisticsDao.save(gKS);
-//        int gKSId = gKS.getId();
+        gkStatisticsDao.save(gKS);
+        int gKSId = gKS.getId();
         goalKeeperDao.save(goalKeeper);
         int goalKeeperId = goalKeeper.getId();
 
@@ -105,8 +102,8 @@ class FootballApplicationTests {
         try {
             assertNotEquals(0, goalKeeperId);
         } finally {
-//            goalKeeperDao.deleteById(goalKeeperId);
-//            gkStatisticsDao.deleteById(gKSId);
+            goalKeeperDao.deleteById(goalKeeperId);
+            gkStatisticsDao.deleteById(gKSId);
         }
     }
 

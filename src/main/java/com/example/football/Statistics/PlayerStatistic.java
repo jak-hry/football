@@ -34,6 +34,12 @@ public class PlayerStatistic {
     private GkStatistics gkStatistics;
 
     public PlayerStatistic(Pace pace, Shooting shooting, Passing passing, Dribbling dribblings, Defending defending, Physicality physicality) {
+        this.pace = pace;
+        this.shooting = shooting;
+        this.passing = passing;
+        this.dribblings = dribblings;
+        this.defending = defending;
+        this.physicality = physicality;
     }
 
     public PlayerStatistic(GkStatistics gkStatistics) {

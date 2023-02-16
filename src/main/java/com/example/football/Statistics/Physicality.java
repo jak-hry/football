@@ -33,7 +33,7 @@ public class Physicality {
         this.aggression = aggression;
     }
 
-    private int calculatePhysicality() {
+    public int calculatePhysicality() {
         double result = jumping * 0.05 + stamina * 0.25 +
                 strength * 0.5 + aggression * 0.2;
         return (result % 1 >= 0.5) ? (int) Math.ceil(result) :

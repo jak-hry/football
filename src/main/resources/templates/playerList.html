@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Players</title>
+</head>
+<body>
+<h2>Testy wyświetlania listy piłkarzy</h2>
+<tr th:each="playerList: ${players}">
+
+    <h4 th:text="${playerList.getName()}"></h4>
+    <h4 th:text="${playerList.getLastName()}"></h4>
+    <h4>Position -
+        <td th:text="${playerList.getPosition() }"></td>
+    </h4>
+    <h4>Overall -
+        <td th:text="${playerList.calculateOverall(playerList)}"></td>
+    </h4>
+    <p>-----------------------------------</p>
+    <br>
+</tr>
+</body>
+</html>

@@ -1,16 +1,42 @@
 package com.example.football.Player;
 
+import com.example.football.Statistics.PlayerStatistic;
 import org.springframework.stereotype.Controller;
+
+import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class PlayerService {
 
-//    public int calculateOverall(Player player) {
-//
-//        switch (player.getPosition()) {
-//            case GK:
-//                return 0;
-//            case LB, RB:
+    private final PlayerDao playerDao;
+
+    public PlayerService(PlayerDao playerDao) {
+        this.playerDao = playerDao;
+    }
+
+    public void addPlayer(Player player) {
+        playerDao.save(player);
+    }
+
+    public List<Player> getAllPlayers() {
+        return (List<Player>) playerDao.findAll();
+    }
+
+    public Optional<Player> getPlayerById(int id){
+        return playerDao.findById(id);
+    }
+
+    public void removePlayer(Player player) {
+        playerDao.delete(player);
+    }
+
+    public int calculateOverall(Player player) {
+
+        switch (player.getPosition()) {
+            case GK:
+                return 0;
+            case LB, RB:
 //                double result2 = defending.slidingTackle * 0.13 + defending.standingTackle * 0.12 +
 //                        defending.interceptions * 0.12 + defending.marking * 0.1 + physicality.stamina * 0.08 +
 //                        dribblings.reactions * 0.08 + passing.crossing * 0.07 + defending.headingAccuracy * 0.07 +
@@ -84,8 +110,24 @@ public class PlayerService {
 //                        pace.acceleration * 0.05 + pace.sprintSpeed * 0.04 + physicality.strength * 0.03;
 //                return (result11 % 1 >= 0.5) ? (int) Math.ceil(result11) :
 //                        (int) Math.floor(result11);
-//            default:
-//                return 0;
-//        }
-//    }
+
+                            case ST:
+                double result11 = player.getPlayerStatistics().getShooting().getFinishing() * 0.2 +
+                        player.getPlayerStatistics().getShooting().getPositioning() * 0.12 +
+                        player.getPlayerStatistics().getPhysicality().getJumping() * 0.1 +
+                        player.getPlayerStatistics().getShooting().getShotPower() * 0.1 +
+                        player.getPlayerStatistics().getDribblings().getReactions() * 0.1 +
+                        player.getPlayerStatistics().getDribblings().getDribblings() * 0.08 +
+                        player.getPlayerStatistics().getDribblings().getBallControl() * 0.08 +
+                        player.getPlayerStatistics().getShooting().getVolleys() * 0.05 +
+                        player.getPlayerStatistics().getShooting().getLongShots() * 0.05 +
+                        player.getPlayerStatistics().getPace().getAcceleration() * 0.05 +
+                        player.getPlayerStatistics().getPace().getSprintSpeed() * 0.04 +
+                        player.getPlayerStatistics().getPhysicality().getStrength() * 0.03;
+                return (result11 % 1 >= 0.5) ? (int) Math.ceil(result11) :
+                        (int) Math.floor(result11);
+            default:
+                return 0;
+        }
+    }
 }
